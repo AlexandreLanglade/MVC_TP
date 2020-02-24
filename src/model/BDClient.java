@@ -28,4 +28,16 @@ public class BDClient {
     public String toString() {
         return "BDClient [listeClient=" + listeClient + "]";
     }
+
+    public int connexionClient(String login, String mdp) {
+        boolean profilExistant;
+        for (Client client : listeClient.values()) {
+            profilExistant = client.verifierCorrespondanceProfil(login, mdp);
+            if (profilExistant) {
+                client.connexionProfil();
+                return client.getNumClient();
+            }
+        }
+        return -1;
+    }
 }

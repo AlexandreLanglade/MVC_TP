@@ -28,4 +28,16 @@ public class BDPersonnel {
     public String toString() {
         return "BDPersonnel [listePersonnel=" + listePersonnel + "]";
     }
+
+    public int connexionPersonnel(String login, String mdp) {
+        boolean profilExistant;
+        for (Personnel personnel : listePersonnel.values()) {
+            profilExistant = personnel.verifierCorrespondanceProfil(login, mdp);
+            if (profilExistant) {
+                personnel.connexionProfil();
+                return personnel.getNumPersonnel();
+            }
+        }
+        return -1;
+    }
 }

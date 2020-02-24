@@ -1,7 +1,6 @@
 package view;
 
 import controller.ControlCreerProfil;
-import view.Clavier;
 import model.ProfilUtilisateur;
 
 /**
