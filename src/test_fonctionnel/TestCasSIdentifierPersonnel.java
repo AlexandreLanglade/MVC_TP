@@ -1,9 +1,9 @@
-package testconsole;
+package test_fonctionnel;
 
-import controleur.ControlCreerProfil;
-import controleur.ControlSIdentifier;
-import modele.ProfilUtilisateur;
-import vueconsole.BoundarySIdentifierPersonnel;
+import controller.ControlCreerProfil;
+import controller.ControlSIdentifier;
+import model.ProfilUtilisateur;
+import view.BoundarySIdentifierPersonnel;
 
 public class TestCasSIdentifierPersonnel {
 
@@ -20,9 +20,9 @@ public class TestCasSIdentifierPersonnel {
 		BoundarySIdentifierPersonnel boundarySIdentifierPersonnel = new BoundarySIdentifierPersonnel(
 				controlSIdentifier);
 		// Lancement du cas
-		int numPersonnel = boundarySIdentifierPersonnel.identifierPersonnel();
+		int numPersonnel = boundarySIdentifierPersonnel.sIdentifierPersonnel();
 
-		// Verification de la bonne réalisation du cas
+		// Verification de la bonne rï¿½alisation du cas
 		System.out.println("VERIFICATION");
 		System.out.println("numero du personnel = " + numPersonnel);
 		System.out.println(controlSIdentifier.visualiserBDUtilisateur());

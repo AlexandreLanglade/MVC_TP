@@ -1,9 +1,9 @@
-package testconsole;
+package test_fonctionnel;
 
-import controleur.ControlCreerProfil;
-import controleur.ControlSIdentifier;
-import controleur.ControlVerifierIdentification;
-import modele.ProfilUtilisateur;
+import controller.ControlCreerProfil;
+import controller.ControlSIdentifier;
+import controller.ControlVerifierIdentification;
+import model.ProfilUtilisateur;
 
 public class TestCasVerifierIdentification {
 

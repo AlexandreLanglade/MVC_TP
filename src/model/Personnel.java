@@ -26,4 +26,8 @@ public class Personnel extends Profil {
     public String toString() {
         return super.toString() + " : " + gerant;
     }
+
+    public boolean isGerant() {
+        return gerant;
+    }
 }

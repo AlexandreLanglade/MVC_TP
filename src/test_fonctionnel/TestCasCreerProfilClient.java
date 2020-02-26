@@ -10,8 +10,7 @@ public class TestCasCreerProfilClient {
 		// Initialisation controleur du cas
 		ControlCreerProfil controlCreerProfil = new ControlCreerProfil();
 		// Initialisation vue du cas
-		BoundaryCreerProfilClient boundaryCreerProfilClient = new BoundaryCreerProfilClient(
-				controlCreerProfil);
+		BoundaryCreerProfilClient boundaryCreerProfilClient = new BoundaryCreerProfilClient(controlCreerProfil);
 
 		// Lancement du cas
 		boundaryCreerProfilClient.creerProfilClient();
@@ -19,7 +18,7 @@ public class TestCasCreerProfilClient {
 		// Verification de la bonne realisation du cas
 		System.out.println("VERIFICATION");
 		System.out.println(controlCreerProfil.visualiserBDUtilisateur());
-		
+
 		// Resultat du test
 		// Veuillez entrer votre nom
 		// Dupond

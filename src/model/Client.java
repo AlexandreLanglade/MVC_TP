@@ -4,7 +4,7 @@ package model;
  * ProfilClient
  */
 public class Client extends Profil {
-    
+
     private static int nbClient = 0;
     private int numClient;
 

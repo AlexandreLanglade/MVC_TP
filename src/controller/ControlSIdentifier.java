@@ -19,4 +19,8 @@ public class ControlSIdentifier {
             return bdPersonnel.connexionPersonnel(login, mdp);
         }
     }
+
+    public String visualiserBDUtilisateur() {
+        return bdPersonnel.toString() + "\n" + bdClient.toString();
+    }
 }

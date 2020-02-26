@@ -40,4 +40,8 @@ public class BDClient {
         }
         return -1;
     }
+
+    public Client trouverClient(int numeroClient) {
+        return listeClient.get(numeroClient);
+    }
 }

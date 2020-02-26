@@ -1,9 +1,9 @@
-package testconsole;
+package test_fonctionnel;
 
-import controleur.ControlCreerProfil;
-import controleur.ControlSIdentifier;
-import modele.ProfilUtilisateur;
-import vueconsole.BoundarySIdentifierClient;
+import controller.ControlCreerProfil;
+import controller.ControlSIdentifier;
+import model.ProfilUtilisateur;
+import view.BoundarySIdentifierClient;
 
 public class TestCasSIdentifierClient {
 

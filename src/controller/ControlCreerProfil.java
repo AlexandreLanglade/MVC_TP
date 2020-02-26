@@ -25,7 +25,7 @@ public class ControlCreerProfil {
         }
     }
 
-	public String visualiserBDUtilisateur() {
-		return bdPersonnel.toString() + "\n" + bdClient.toString();
-	}
+    public String visualiserBDUtilisateur() {
+        return bdPersonnel.toString() + "\n" + bdClient.toString();
+    }
 }

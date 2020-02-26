@@ -23,10 +23,14 @@ public abstract class Profil {
     }
 
     public boolean verifierCorrespondanceProfil(String login, String mdp) {
-        return this.login == login && this.mdp == mdp;
+        return this.login.equals(login) && this.mdp.equals(mdp);
     }
 
     public void connexionProfil() {
         connecte = true;
+    }
+
+    public boolean isConnecte() {
+        return connecte;
     }
 }
