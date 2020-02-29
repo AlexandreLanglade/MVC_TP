@@ -1,16 +1,16 @@
-package testconsole;
+package test_fonctionnel;
 
-import controleur.ControlAjouterAlimentMenu;
-import controleur.ControlCommander;
-import controleur.ControlCreerProfil;
-import controleur.ControlEnregistrerCoordonneesBancaires;
-import controleur.ControlSIdentifier;
-import controleur.ControlVerifierCoordonneesBancaires;
-import controleur.ControlVerifierIdentification;
-import modele.AlimentMenu;
-import modele.ProfilUtilisateur;
-import vueconsole.BoundaryCommander;
-import vueconsole.BoundaryEnregistrerCoordonneesBancaires;
+import controller.ControlAjouterAlimentMenu;
+import controller.ControlCommander;
+import controller.ControlCreerProfil;
+import controller.ControlEnregistrerCoordonneesBancaires;
+import controller.ControlSIdentifier;
+import controller.ControlVerifierCoordonneesBancaires;
+import controller.ControlVerifierIdentification;
+import model.AlimentMenu;
+import model.ProfilUtilisateur;
+import view.BoundaryCommander;
+import view.BoundaryEnregistrerCoordonneesBancaires;
 
 public class TestCasCommander {
 

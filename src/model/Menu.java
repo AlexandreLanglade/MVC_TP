@@ -35,8 +35,32 @@ public class Menu {
         listeBoisson.add(boisson);
     }
 
+    public Hamburger choixHamburger(int numeroHamburger) {
+        return listeHamburger.get(numeroHamburger);
+    }
+
+    public Accompagnement choixAccompagnement(int numeroAccompagnement) {
+        return listeAccompagnement.get(numeroAccompagnement);
+    }
+
+    public Boisson choixBoisson(int numeroBoisson) {
+        return listeBoisson.get(numeroBoisson);
+    }
+
     public String toString() {
         return "Menu [listeHamburger=" + listeHamburger + ", listeBoisson=" + listeBoisson + ", listeAccompagnement="
                 + listeAccompagnement + "]";
+    }
+
+    public List<Hamburger> getListeHamburger() {
+        return listeHamburger;
+    }
+
+    public List<Accompagnement> getListeAccompagnement() {
+        return listeAccompagnement;
+    }
+
+    public List<Boisson> getListeBoisson() {
+        return listeBoisson;
     }
 }

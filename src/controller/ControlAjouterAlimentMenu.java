@@ -39,7 +39,7 @@ public class ControlAjouterAlimentMenu {
                 break;
 
             case BOISSON:
-                aliment = FabriqueAliment.creerAliment(AlimentMenu.ACCOMPAGNEMENT, nom);
+                aliment = FabriqueAliment.creerAliment(AlimentMenu.BOISSON, nom);
                 menu.ajouterAliment((Boisson) aliment);
                 break;
 

@@ -14,4 +14,9 @@ public abstract class Aliment {
     public String toString() {
         return "Aliment [nom=" + nom + "]";
     }
+
+    public String getNom() {
+        return nom;
+    }
+
 }
