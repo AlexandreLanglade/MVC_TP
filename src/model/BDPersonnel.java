@@ -25,10 +25,6 @@ public class BDPersonnel {
         listePersonnel.put(personnel.getNumPersonnel(), personnel);
     }
 
-    public String toString() {
-        return "BDPersonnel [listePersonnel=" + listePersonnel + "]";
-    }
-
     public int connexionPersonnel(String login, String mdp) {
         boolean profilExistant;
         for (Personnel personnel : listePersonnel.values()) {
@@ -43,5 +39,9 @@ public class BDPersonnel {
 
     public Personnel trouverPersonnel(int numeroPersonnel) {
         return listePersonnel.get(numeroPersonnel);
+    }
+
+    public String toString() {
+        return "BDPersonnel [listePersonnel=" + listePersonnel + "]";
     }
 }

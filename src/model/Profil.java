@@ -18,10 +18,6 @@ public abstract class Profil {
         this.mdp = mdp;
     }
 
-    public String toString() {
-        return "Profil [login=" + login + ", mdp=" + mdp + ", nom=" + nom + ", prenom=" + prenom + "]";
-    }
-
     public boolean verifierCorrespondanceProfil(String login, String mdp) {
         return this.login.equals(login) && this.mdp.equals(mdp);
     }
@@ -32,5 +28,26 @@ public abstract class Profil {
 
     public boolean isConnecte() {
         return connecte;
+    }
+
+    public String toString() {
+        return "Profil [connecte=" + connecte + ", login=" + login + ", mdp=" + mdp + ", nom=" + nom + ", prenom="
+                + prenom + "]";
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getMdp() {
+        return mdp;
     }
 }

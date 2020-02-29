@@ -23,11 +23,12 @@ public class Personnel extends Profil {
         return numPersonnel;
     }
 
-    public String toString() {
-        return super.toString() + " : " + gerant;
-    }
-
     public boolean isGerant() {
         return gerant;
+    }
+
+    public String toString() {
+        return "Personnel [gerant=" + gerant + ", nom=" + getNom() + ", prenom=" + getPrenom() + ", login=" + getLogin()
+                + ", mdp=" + getMdp() + ", connecte=" + isConnecte() + "]";
     }
 }

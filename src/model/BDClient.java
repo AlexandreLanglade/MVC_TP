@@ -25,10 +25,6 @@ public class BDClient {
         listeClient.put(client.getNumClient(), client);
     }
 
-    public String toString() {
-        return "BDClient [listeClient=" + listeClient + "]";
-    }
-
     public int connexionClient(String login, String mdp) {
         boolean profilExistant;
         for (Client client : listeClient.values()) {
@@ -43,5 +39,9 @@ public class BDClient {
 
     public Client trouverClient(int numeroClient) {
         return listeClient.get(numeroClient);
+    }
+
+    public String toString() {
+        return "BDClient [listeClient=" + listeClient + "]";
     }
 }
