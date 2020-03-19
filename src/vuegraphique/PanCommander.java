@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.util.List;
 
 import javax.swing.Box;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,9 +33,17 @@ public class PanCommander extends JPanel {
     private Font policeParagraphe = new Font("Calibri", Font.HANGING_BASELINE, 16);
 
     private JComboBox<String> comboBoxHamburger = new JComboBox<>();
+    private JComboBox<String> comboBoxAccompagnement = new JComboBox<>();
+    private JComboBox<String> comboBoxBoisson = new JComboBox<>();
 
-    Box boxMiseEnPageCommande = Box.createVerticalBox();
-    Box boxChoixHamburger = Box.createHorizontalBox();
+    private JButton validerCommande = new JButton();
+
+    private Box boxValiderChoix = Box.createHorizontalBox();
+
+    private Box boxMiseEnPageCommande = Box.createVerticalBox();
+    private Box boxChoixHamburger = Box.createHorizontalBox();
+    private Box boxChoixAccompagnement = Box.createHorizontalBox();
+    private Box boxChoixBoisson = Box.createHorizontalBox();
 
     public PanCommander(
         // parametres pour l'initialisation des attributs metiers
@@ -56,6 +65,10 @@ public class PanCommander extends JPanel {
         texteCommander.setFont(policeTitre);
         JLabel texteHamburger = new JLabel("Choisissez votre hamburger");
         texteHamburger.setFont(policeParagraphe);
+        JLabel texteAccompagnement = new JLabel("Choisissez votre accompagnement");
+        texteAccompagnement.setFont(policeParagraphe);
+        JLabel texteBoisson = new JLabel("Choisissez votre boisson");
+        texteBoisson.setFont(policeParagraphe);
 
         comboBoxHamburger.addActionListener(new ActionListener() {
         @Override
@@ -64,13 +77,47 @@ public class PanCommander extends JPanel {
         }
         });
 
+        comboBoxAccompagnement.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        numeroAccompagnement = comboBoxAccompagnement.getSelectedIndex();
+        }
+        });
+
+        comboBoxBoisson.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        numeroBoisson = comboBoxBoisson.getSelectedIndex();
+        }
+        });
+
+        validerCommande.setText("Valider");
+            validerCommande.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            if (
+            numeroHamburger != 0 && numeroAccompagnement != 0
+            && numeroBoisson != 0) {
+            System.out.println("OK");;
+            }
+            }
+            });
+
         boxMiseEnPageCommande.add(texteCommander);
         boxMiseEnPageCommande.add(Box.createRigidArea(new Dimension(0, 30)));
+        
         boxChoixHamburger.add(texteHamburger);
-
         boxChoixHamburger.add(comboBoxHamburger);
+        boxChoixAccompagnement.add(texteAccompagnement);
+        boxChoixAccompagnement.add(comboBoxAccompagnement);
+        boxChoixBoisson.add(texteBoisson);
+        boxChoixBoisson.add(comboBoxBoisson);
+
+        boxValiderChoix.add(validerCommande);
 
         boxMiseEnPageCommande.add(boxChoixHamburger);
+        boxMiseEnPageCommande.add(boxChoixAccompagnement);
+        boxMiseEnPageCommande.add(boxChoixBoisson);
+        boxMiseEnPageCommande.add(boxValiderChoix);
 
         add(boxMiseEnPageCommande);
     }
@@ -89,6 +136,20 @@ public class PanCommander extends JPanel {
         comboBoxHamburger.addItem("");
         for (String hamburger : listeHamburger) {
             comboBoxHamburger.addItem(hamburger);
+        }
+
+        List<String> listeAccompagnement = controlCommande.donnerListeAccompagnement();
+        comboBoxAccompagnement.removeAllItems();
+        comboBoxAccompagnement.addItem("");
+        for (String accompagnement : listeAccompagnement) {
+            comboBoxAccompagnement.addItem(accompagnement);
+        }
+
+        List<String> listeBoisson = controlCommande.donnerListeBoisson();
+        comboBoxBoisson.removeAllItems();
+        comboBoxBoisson.addItem("");
+        for (String boisson : listeBoisson) {
+            comboBoxBoisson.addItem(boisson);
         }
     }
 }
