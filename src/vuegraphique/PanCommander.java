@@ -18,7 +18,7 @@ import controller.ControlCommander;
 /**
  * PanCommander
  */
-public class PanCommander extends JPanel {
+public class PanCommander extends JPanel implements IUseEnregistrerCoordonneesBancaires {
 
     private static final long serialVersionUID = 1L;
     private ControlCommander controlCommande;
@@ -44,6 +44,9 @@ public class PanCommander extends JPanel {
     private Box boxChoixHamburger = Box.createHorizontalBox();
     private Box boxChoixAccompagnement = Box.createHorizontalBox();
     private Box boxChoixBoisson = Box.createHorizontalBox();
+
+    private JLabel numeroCommande = new JLabel();
+    private Box boxMiseEnPageNumeroCommande = Box.createVerticalBox();
 
     public PanCommander(
         // parametres pour l'initialisation des attributs metiers
@@ -97,10 +100,21 @@ public class PanCommander extends JPanel {
             if (
             numeroHamburger != 0 && numeroAccompagnement != 0
             && numeroBoisson != 0) {
-            System.out.println("OK");;
+            validationCartePayement();
             }
             }
             });
+
+
+        JLabel texteNumeroCommandeTitre = new JLabel("Votre commande");
+        texteNumeroCommandeTitre.setFont(policeTitre);
+        numeroCommande.setFont(policeParagraphe);
+        boxMiseEnPageNumeroCommande.add(numeroCommande);
+        boxMiseEnPageNumeroCommande.add(texteNumeroCommandeTitre);
+        boxMiseEnPageNumeroCommande.add(Box.createRigidArea(new Dimension(0, 30)));
+        numeroCommande.setFont(policeParagraphe);
+        boxMiseEnPageNumeroCommande.add(numeroCommande);
+        this.add(boxMiseEnPageNumeroCommande);
 
         boxMiseEnPageCommande.add(texteCommander);
         boxMiseEnPageCommande.add(Box.createRigidArea(new Dimension(0, 30)));
@@ -123,6 +137,8 @@ public class PanCommander extends JPanel {
     }
 
     public void commander(int numClient) {
+        boxMiseEnPageCommande.setVisible(true);
+        boxMiseEnPageNumeroCommande.setVisible(false);
         numeroClient = numClient;
         boolean identif = controlCommande.verifierIdentification(numeroClient);
         if (identif) {
@@ -151,5 +167,38 @@ public class PanCommander extends JPanel {
         for (String boisson : listeBoisson) {
             comboBoxBoisson.addItem(boisson);
         }
+    }
+
+    @Override
+    public void retourEnregistrerCoordonneesBancaire(boolean carteValide) {
+        this.panEnregistrerCoordonneesBancaire.setVisible(false);
+        if (carteValide) {
+            this.enregistrerCommande(carteValide);
+        }
+    }
+
+    private void validationCartePayement(){
+        boolean carteRenseignee = controlCommande.verifierExistanceCarteBancaire(numeroClient);
+        if (!carteRenseignee) {
+            boxMiseEnPageCommande.setVisible(false);
+            panEnregistrerCoordonneesBancaire.setVisible(true);
+            this.repaint();
+            panEnregistrerCoordonneesBancaire.enregistrerCoordonneesBancaire(numeroClient, this);
+        } else {
+            this.enregistrerCommande(carteRenseignee);
+        }
+    }
+
+    private void enregistrerCommande(boolean carteRenseignee) {
+        if (carteRenseignee) {
+            int numCommande =controlCommande.enregistrerCommande(numeroClient,
+                    numeroHamburger,
+            numeroAccompagnement, numeroBoisson);
+            numeroCommande.setText("Votre numero est : " + numCommande);
+        }
+        this.setVisible(true);
+        boxMiseEnPageCommande.setVisible(false);
+        boxMiseEnPageNumeroCommande.setVisible(true);
+        this.repaint();
     }
 }

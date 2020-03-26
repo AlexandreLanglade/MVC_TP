@@ -48,10 +48,12 @@ public class FrameClient extends JFrame {
         panCommander.initialisation();
         panHistorique.initialisation();
         panModifierProfil.initialisation();
+        panEnregistrerCoordonneesBancaire.initialisation();
         
         panContents.setLayout(cartes);
 
         panContents.add(panCommander, "COMMANDER");
+        panCommander.add(panEnregistrerCoordonneesBancaire, "ENREGISTRER_COORDONNEES_BANCAIRE");
         panContents.add(panModifierProfil, "MODIFIER_PROFIL");
         panContents.add(panHistorique, "HISTORIQUE");
     

@@ -23,6 +23,7 @@ public class PanEnregistrerCoordonneesBancaire extends JPanel {
     private static final long serialVersionUID = 1L;
     // controleurs du cas + panel des cas inclus ou etendus en lien avec un acteur
     private ControlEnregistrerCoordonneesBancaires controlEnregistrerCoordonneesBancaires;
+	private IUseEnregistrerCoordonneesBancaires panAppelant;
 	// les attributs metiers (ex : numClient)
 	private int numClient;
 	// Les elements graphiques :
@@ -51,8 +52,8 @@ public class PanEnregistrerCoordonneesBancaire extends JPanel {
 		) {
 		// initialisation des attributs metiers 
         // initilaisation du controleur du cas + panels 
-        this.controlEnregistrerCoordonneesBancaires = controlEnregistrerCoordonneesBancaires;
 		// des cas inclus ou etendus en lien avec un acteur
+		this.controlEnregistrerCoordonneesBancaires = controlEnregistrerCoordonneesBancaires;
 	}
 
 	//Methode d'initialisation du panel
@@ -71,7 +72,9 @@ public class PanEnregistrerCoordonneesBancaire extends JPanel {
 		validationCoordonneeBancaire.setText("Valider");
 		validationCoordonneeBancaire.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-		System.out.println("OK");
+			int numeroCarte = Integer.valueOf(textAeraNumeroCarte.getText());
+			int dateCarte = Integer.valueOf(textAreaDateExpiration.getText());
+			traitementCoordonneesBancaires(numeroCarte, dateCarte);
 		}
 		});
 
@@ -108,8 +111,9 @@ public class PanEnregistrerCoordonneesBancaire extends JPanel {
 	}
 
 	// Methode correspondant au nom du cas
-	public void enregistrerCoordonneesBancaire(int numClient) {
+	public void enregistrerCoordonneesBancaire(int numClient, IUseEnregistrerCoordonneesBancaires panAppelant) {
 		this.numClient = numClient;
+		this.panAppelant =panAppelant;
 		textAeraNumeroCarte.setText("");
 		textAreaDateExpiration.setText("MMAA");
 		this.setVisible(true);
@@ -117,4 +121,9 @@ public class PanEnregistrerCoordonneesBancaire extends JPanel {
 	}
 
 	// Methodes privees pour le bon deroulement du cas
+
+	private void traitementCoordonneesBancaires(int numeroCarte, int dateCarte) {
+		boolean carteValide = controlEnregistrerCoordonneesBancaires.enregistrerCoordonneesBancaires(numClient, numeroCarte, dateCarte);
+		panAppelant.retourEnregistrerCoordonneesBancaire(carteValide);
+	}
 }
