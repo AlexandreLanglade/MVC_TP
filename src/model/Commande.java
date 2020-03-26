@@ -25,4 +25,8 @@ public class Commande {
         return numeroCommandeAttribuee;
     }
 
+    public static void clearNombreCommande() {
+        numeroCommande = 0;
+    }
+
 }

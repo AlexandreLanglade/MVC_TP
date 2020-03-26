@@ -53,6 +53,5 @@ public class TestEcranClient {
 				controlEnregistrerCoordonneesBancaires);
 		new FrameClient(numClient2, controlCommande,
 				controlEnregistrerCoordonneesBancaires);
-
 	}
 }
