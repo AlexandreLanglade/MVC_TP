@@ -7,15 +7,14 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.ControlVisualiserCommandeJour;
-import model.BDCommande;
 import model.ProfilUtilisateur;
 import model.PropertyName;
-import view.Fichier;
 
 public class PanVisualiserCommandeJour extends JPanel implements PropertyChangeListener {
 	private static final long serialVersionUID = 1L;
